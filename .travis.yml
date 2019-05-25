@@ -1,11 +1,11 @@
 ---
 language: python
-python: "2.7"
 before_install:
  - sudo apt-get update -qq
  - sudo apt-get install -qq python-apt python-pycurl
 install:
   - pip install ansible>=1.6.0
+  - ansible --version
 script:
   # Prepare tests
   - echo localhost > inventory
@@ -14,13 +14,13 @@ script:
   - ansible-playbook --syntax-check -i inventory test.yml
 
   # First run
-  - ansible-playbook -i inventory test.yml --connection=local --sudo
+  - ansible-playbook -i inventory test.yml --connection=local --become
 
   - sudo cat /var/log/openvpn.log
 
   # Second run Idempotence test
   - >
-    ansible-playbook -i inventory test.yml --connection=local --sudo
+    ansible-playbook -i inventory test.yml --connection=local --become
     | grep -q 'changed=0.*failed=0'
     && (echo 'Idempotence test: pass' && exit 0)
     || (echo 'Idempotence test: fail' && exit 1)
