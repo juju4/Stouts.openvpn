@@ -1,7 +1,7 @@
 ---
 
 - name: Setup bridge
-  when: openvpn_bridge
+  when: openvpn_bridge|bool
   template:
     src: bridge-interface.j2
     dest: "/etc/network/interfaces.d/{{ openvpn_dev }}"

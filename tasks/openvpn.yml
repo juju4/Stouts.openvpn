@@ -1,7 +1,7 @@
 ---
 
 - name: Include OS-specific variables.
-  include_vars: "{{item}}"
+  include_vars: "{{ item }}"
   with_first_found:
     - files:
       - "{{ ansible_distribution }}.{{ ansible_lsb.codename }}.yml"
@@ -21,4 +21,4 @@
 - include: setup-bridge.yml
 
 - name: Ensure OpenVPN is started
-  service: name={{openvpn_service}} state=started enabled=yes
+  service: name={{ openvpn_service }} state=started enabled=yes

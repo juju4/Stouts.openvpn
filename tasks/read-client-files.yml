@@ -36,4 +36,4 @@
 - name: Set tls auth file contents as fact.
   set_fact:
     openvpn_tls_auth_file_contents: "{{ openvpn_read_tlsauth_file_results['content'] | b64decode | default('') }}"
-  when: openvpn_tls_auth 
+  when: openvpn_tls_auth
