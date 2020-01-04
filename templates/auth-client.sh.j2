@@ -1,4 +1,5 @@
 #!/bin/bash
+{{ ansible_managed | comment }}
 
 if [[ "$password" == "{{ openvpn_simple_auth_password }}" ]]; then
 	R="0"
