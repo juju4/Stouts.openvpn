@@ -70,7 +70,7 @@ openvpn_use_pam_users: []                         # If empty use system users
                                                   # - { name: user, password: password }
 
 # Use LDAP authentication (default is disabled)
-openvpn_use_ldap: no
+openvpn_use_ldap: false
 openvpn_ldap_tlsenable: 'no'
 openvpn_ldap_follow_referrals: 'no'
 

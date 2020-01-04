@@ -29,9 +29,9 @@
 
 - name: Install LDAP dependencies (Debian)
   apt: name=openvpn-auth-ldap force=yes
-  when: openvpn_use_ldap
+  when: openvpn_use_ldap|bool
 
 - name: Install bridge dependencies (Debian)
   apt:
     name: [bridge-utils]
-  when: openvpn_bridge
+  when: openvpn_bridge|bool
