@@ -19,10 +19,14 @@ openvpn_bridge: {}
 openvpn_max_clients: 100
 openvpn_log: /var/log/openvpn.log                   # Log's directory
 openvpn_keepalive: "10 120"
-openvpn_ifconfig_pool_persist: ipp.txt
+# absolute path, else inside /etc/openvpn where variable file should not be
+openvpn_ifconfig_pool_persist: /var/log/openvpn/ipp.txt
 openvpn_comp_lzo: yes                               # Enable compression
 openvpn_cipher: BF-CBC                              # Encryption algorithm
-openvpn_status: openvpn-status.log
+# absolute path, else inside /etc/openvpn where variable file should not be
+# https://community.openvpn.net/openvpn/ticket/479
+# https://bugzilla.redhat.com/show_bug.cgi?id=1002240
+openvpn_status: /run/openvpn-status.log
 openvpn_verb: 3
 openvpn_tls_auth : False                            # Enable perfect forward secracyxy
 openvpn_tls_key  : "ta.key"
